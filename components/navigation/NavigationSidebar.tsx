@@ -3,7 +3,7 @@ import { db } from '@/lib/db'
 import { redirect } from 'next/navigation'
 import { UserButton } from '@clerk/nextjs'
 
-import NagiationAction from '@/components/navigation/NavigiationAction'
+import NagiationAction from '@/components/navigation/NavigationAction'
 import NavigationItem from '@/components/navigation/NavigationItem'
 import { Separator } from '@/components/ui/separator'
 import { ScrollArea } from '@/components/ui/scroll-area'

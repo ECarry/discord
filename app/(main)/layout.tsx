@@ -1,4 +1,4 @@
-import NagiationSidebar from "@/components/navigation/NavigiationSidebar"
+import NagiationSidebar from "@/components/navigation/NavigationSidebar"
 
 const MainLayout = ({
   children
