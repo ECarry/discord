@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from "react-hook-form"
@@ -35,6 +36,7 @@ const formSchema = z.object({
 })
 
 const InitialModal = () => {
+  const router = useRouter()
   // Fix:
   // Warning: Expected server HTML to contain a matching <div> in <body>.
   // Error: Hydration failed because the initial UI does not match what was rendered on the server.
@@ -56,7 +58,19 @@ const InitialModal = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
-    
+    try {
+      await fetch('/api/servers', {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      })
+
+      form.reset()
+      router.refresh()
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   if (!isMounted) {
