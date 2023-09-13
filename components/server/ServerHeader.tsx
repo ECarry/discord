@@ -54,7 +54,7 @@ const ServerHeader = ({
       >
         {isModerator && (
           <DropdownMenuItem
-            onClick={() => onOpen('invite', {server})}
+            onClick={() => onOpen('invite', { server })}
             className="
               text-indigo-600 
               dark:text-indigo-400 
@@ -69,6 +69,7 @@ const ServerHeader = ({
         )}
         {isAdmin && (
           <DropdownMenuItem 
+            onClick={() => onOpen('editServer', { server })}
             className="
               px-3
               py-2
