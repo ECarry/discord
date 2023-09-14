@@ -94,7 +94,8 @@ const ServerHeader = ({
           </DropdownMenuItem>
         )}
         {isModerator && (
-          <DropdownMenuItem 
+          <DropdownMenuItem
+            onClick={() => onOpen('CreateChannel', { server })}
             className="
               px-3
               py-2
