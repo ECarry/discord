@@ -1,7 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-
 import { 
   Dialog, 
   DialogContent, 
@@ -17,7 +15,6 @@ import { useOrigin } from '@/hooks/use-origin'
 import { useState } from 'react'
 
 export const InviteModal = () => {
-  const router = useRouter()
   const { onOpen, isOpen, onClose, type, data } = useModal()
   const origin = useOrigin()
 
