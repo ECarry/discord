@@ -50,6 +50,8 @@ export const CreateChannelModal = () => {
   const router = useRouter()
   const { isOpen, onClose, type, data } = useModal()
 
+  const { server } = data
+
   const isModalOpen = isOpen && type === 'CreateChannel'
 
   const form = useForm({
@@ -67,7 +69,7 @@ export const CreateChannelModal = () => {
       const url = qs.stringifyUrl({
         url: '/api/channels',
         query: {
-          serverId: data.server?.id
+          serverId: server?.id
         }
       })
       await fetch(url, {
