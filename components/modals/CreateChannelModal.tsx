@@ -1,6 +1,6 @@
 'use client'
 
-import { useParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from "react-hook-form"
@@ -48,8 +48,7 @@ const formSchema = z.object({
 
 export const CreateChannelModal = () => {
   const router = useRouter()
-  const params = useParams()
-  const { isOpen, onClose, type } = useModal()
+  const { isOpen, onClose, type, data } = useModal()
 
   const isModalOpen = isOpen && type === 'CreateChannel'
 
@@ -68,7 +67,7 @@ export const CreateChannelModal = () => {
       const url = qs.stringifyUrl({
         url: '/api/channels',
         query: {
-          serverId: params?.serverId
+          serverId: data.server?.id
         }
       })
       await fetch(url, {
