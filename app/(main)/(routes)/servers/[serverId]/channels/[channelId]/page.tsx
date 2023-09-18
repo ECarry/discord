@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 
 import ChatHeader from "@/components/chat/ChatHeader";
 import ChatInput from "@/components/chat/ChatInput";
+import ChatMessages from "@/components/chat/ChatMessages";
 
 interface ChannelIdPageProps {
   params: {
@@ -48,7 +49,20 @@ const ChannelIdPage = async ({
         type='channel'
       />
 
-      <div className="flex-1">Chat messages</div>
+      <ChatMessages 
+        name={channel.name}
+        member={member}
+        type="channel"
+        chatId={channel.id}
+        apiUrl="/api/messages"
+        socketUrl="/api/socket/messages"
+        socketQuery={{
+          channelId: channel.id,
+          serverId: channel.serverId
+        }}
+        paramKey="channelId"
+        paramValue={channel.id}
+      />
 
       <ChatInput 
         apiUrl="/api/socket/messages"
