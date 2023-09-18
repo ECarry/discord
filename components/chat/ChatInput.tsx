@@ -8,6 +8,7 @@ import qs from "query-string";
 import { Plus, Smile } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Form, FormField, FormItem } from "@/components//ui/form";
+import { useModal } from "@/hooks/use-modal-store";
 
 interface ChatInputProps {
   apiUrl: string;
@@ -26,6 +27,8 @@ const ChatInput = ({
   name,
   type
 }: ChatInputProps) => {
+  const { onOpen } = useModal()
+
   const form = useForm<z.infer<typeof formScheam>>({
     resolver: zodResolver(formScheam),
     defaultValues: {
@@ -45,11 +48,11 @@ const ChatInput = ({
       
       await fetch(url, {
         method: 'POST',
-        body: JSON.stringify(values)
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
       })
     } catch (error) {
       console.log(error);
-      
     }
   }
 
@@ -64,7 +67,7 @@ const ChatInput = ({
               <div className="relative p-4 pb-6">
                 <button
                   type="button"
-                  onClick={() => {}}
+                  onClick={() => {onOpen('messageFile', { apiUrl, query })}}
                   className="
                     absolute 
                     top-7 
