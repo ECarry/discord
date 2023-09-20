@@ -8,6 +8,7 @@ import * as z from 'zod'
 import qs from "query-string";
 import { useForm  } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useModal } from "@/hooks/use-modal-store";
 
 import { Edit, FileIcon, ShieldAlert, ShieldCheck, Trash } from "lucide-react";
 import UserAvator from "../UserAvator";
@@ -61,6 +62,7 @@ const ChatItem = ({
   const fileType = fileUrl?.split('.').pop()
 
   const [isEditing, setIsEditing] = useState(false)
+  const { onOpen } = useModal()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -261,7 +263,10 @@ const ChatItem = ({
           {
             canEditMessage && (
               <ActionTooltip label="Delete">
-                <Trash className="cursor-pointer ml-auto w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition" />
+                <Trash onClick={() => onOpen('deleteMessge', {
+                  apiUrl: `${socketUrl}/${id}`,
+                  query: socketQuery
+                }) } className="cursor-pointer ml-auto w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition" />
               </ActionTooltip>
             )
           }

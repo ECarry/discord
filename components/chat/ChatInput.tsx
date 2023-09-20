@@ -43,7 +43,6 @@ const ChatInput = ({
 
   const onSubmit = async (values: z.infer<typeof formScheam>) => {
     try {
-      console.log(values);
       const url = qs.stringifyUrl({
         url: apiUrl,
         query
