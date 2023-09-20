@@ -23,7 +23,7 @@ export const SocketProvider = ({
   children: React.ReactNode 
 }) => {
   const [socket, setSocket] = useState(null)
-  const [isConnected, setIsConnected] = useState(true)
+  const [isConnected, setIsConnected] = useState(false)
 
   useEffect(() => {
     const socketInstance = new (ClientIO as any)(process.env.NEXT_PUBLIC_SITE_URL!, {
@@ -31,6 +31,8 @@ export const SocketProvider = ({
       addTrailingSlash: false,
     });
 
+    console.log('------socketInstance-------', socketInstance);
+    
     socketInstance.on("connect", () => {
       console.log('-------> socket connected ..........');
       
