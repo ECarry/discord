@@ -24,7 +24,7 @@ const MediaRoom = ({
   const [token, setToken] = useState('')
 
   useEffect(() => {
-    if (!user?.firstName || !user?.lastName) return
+    if (!user?.firstName || !user?.lastName) return;
 
     const name = `${user.firstName} ${user.lastName}`;
 
@@ -56,6 +56,8 @@ const MediaRoom = ({
 
   return (
     <LiveKitRoom
+      data-lk-theme="default"
+      connect={true}
       video={video}
       audio={audio}
       token={token}
