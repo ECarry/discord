@@ -8,7 +8,6 @@ import ChatHeader from "@/components/chat/ChatHeader";
 import ChatMessages from "@/components/chat/ChatMessages";
 import ChatInput from "@/components/chat/ChatInput";
 import MediaRoom from "@/components/MediaRoom";
-import { channel } from "diagnostics_channel";
 
 interface ConversationIdPageProps {
   params: {

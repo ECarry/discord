@@ -276,10 +276,13 @@ const ChatItem = ({
           {
             canEditMessage && (
               <ActionTooltip label="Delete">
-                <Trash onClick={() => onOpen('deleteMessge', {
-                  apiUrl: `${socketUrl}/${id}`,
-                  query: socketQuery
-                }) } className="cursor-pointer ml-auto w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition" />
+                <Trash onClick={() => {
+                  onOpen('deleteMessge', {
+                    apiUrl: `${socketUrl}/${id}`,
+                    query: socketQuery
+                  }) 
+                  setIsEditing(false)
+                }} className="cursor-pointer ml-auto w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition" />
               </ActionTooltip>
             )
           }

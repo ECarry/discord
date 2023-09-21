@@ -25,7 +25,7 @@ export const useChatSocket = ({
 
   useEffect(() => {
     if (!socket) {
-      return
+      return;
     }
 
     socket.on(updateKey, (message: MessageWithMemberWithProfile) => {
@@ -48,7 +48,7 @@ export const useChatSocket = ({
 
         return {
           ...oldData,
-          pages: newData
+          pages: newData,
         }
       })
     })

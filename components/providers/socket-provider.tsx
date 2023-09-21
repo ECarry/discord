@@ -32,8 +32,6 @@ export const SocketProvider = ({
     });
     
     socketInstance.on("connect", () => {
-      console.log('-------> socket connected ..........');
-      
       setIsConnected(true);
     });
 

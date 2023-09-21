@@ -17,11 +17,7 @@ interface ChatMessagesProps {
   chatId: string;
   apiUrl: string;
   socketUrl: string;
-  socketQuery: {
-    channelId?: string,
-    serverId?: string,
-    conversationId?: string,
-  };
+  socketQuery: Record<string, string>;
   paramKey: 'channelId' | 'conversationId';
   paramValue: string;
   type: 'channel' | 'conversation'
@@ -96,10 +92,12 @@ const ChatMessages = ({
   return (
     <div ref={chatRef} className="flex-1 flex flex-col py-4 overflow-y-auto">
       {!hasNextPage && <div className="flex-1" />}
-      {!hasNextPage && <ChatWelecome 
-        name={name}
-        type={type}
-      />}
+      {!hasNextPage && (
+        <ChatWelecome 
+          name={name}
+          type={type}
+        />
+      )}
       {hasNextPage && (
         <div className="flex justify-center">
           {isFetchingNextPage ? (
