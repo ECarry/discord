@@ -30,8 +30,6 @@ export const SocketProvider = ({
       path: "/api/socket/io",
       addTrailingSlash: false,
     });
-
-    console.log('------socketInstance-------', socketInstance);
     
     socketInstance.on("connect", () => {
       console.log('-------> socket connected ..........');
@@ -41,10 +39,6 @@ export const SocketProvider = ({
 
     socketInstance.on("disconnect", () => {
       setIsConnected(false);
-
-      console.log('Socket disconnected, reconnect......');
-      
-      socketInstance.connect()
     });
 
     setSocket(socketInstance)
