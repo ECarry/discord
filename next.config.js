@@ -8,6 +8,7 @@ const nextConfig = {
 
     return config;
   },
+  swcMinify: false,
   images: {
     remotePatterns: [
       {
